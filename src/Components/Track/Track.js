@@ -5,16 +5,24 @@ class Track extends Component {
   constructor(props) {
     super(props);
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
   renderAction() {
-    // isRemoval ? (
-    //   <button className="Track-action">+</button>
-    // ) : (
-    //   <button className="Track-action">-</button>
-    // );
+    return this.props.isRemoval ? (
+      <button className="Track-action" onClick={this.addTrack}>
+        +
+      </button>
+    ) : (
+      <button className="Track-action" onClick={this.removeTrack}>
+        -
+      </button>
+    );
   }
   addTrack(event) {
     this.props.onAdd(this.props.track);
+  }
+  removeTrack(event) {
+    this.props.onRemove(this.props.track);
   }
   render() {
     return (
